@@ -12,6 +12,7 @@ import {
   Phone,
   Youtube,
 } from 'lucide-react';
+import { useEffect } from 'react';
 
 const Footer = () => {
   const {
@@ -36,17 +37,24 @@ const Footer = () => {
     error: socialMediaError,
     isLoading: socialMediaLoading,
   } = useSWR('/api/products/socialMedia');
-
-  if (
-    categoriesLoading ||
-    brandsLoading ||
-    articlesLoading ||
-    socialMediaLoading ||
-    !categories ||
-    !brands ||
-    !articles ||
-    !socialMedia
-  )
+  useEffect(() => {
+    console.log(articles);
+    console.log(brands);
+    console.log(socialMedia);
+    console.log(categories);
+    console.log(brandsError);
+    console.log(categoriesError);
+    console.log(socialMediaError);
+    console.log(articlesError);
+  }, [
+    articles,
+    brands,
+    categories,
+    socialMedia,
+    brandsError,
+    articlesError,
+  ]);
+  if (!categories || !brands || !articles || !socialMedia)
     return (
       <div className='skeleton h-[304px] w-full rounded-lg lg:h-[536px]' />
     );
@@ -60,9 +68,7 @@ const Footer = () => {
           height={60}
           alt={'logo'}
         />
-        <p className='w-[200px]'>
-        {process.env.NEXT_PUBLIC_APP_DESC}
-        </p>
+        <p className='w-[200px]'>{process.env.NEXT_PUBLIC_APP_DESC}</p>
       </aside>
       <nav>
         <h6 className='footer-title'>Information - Feel free to contact</h6>
