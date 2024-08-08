@@ -15,9 +15,10 @@ type Inputs = {
 
 const Form = () => {
   const { data: session } = useSession();
-
   const params = useSearchParams();
   const router = useRouter();
+  
+  // Retrieves the callback URL from query parameters or defaults to '/'
   let callbackUrl = params.get('callbackUrl') || '/';
 
   const {

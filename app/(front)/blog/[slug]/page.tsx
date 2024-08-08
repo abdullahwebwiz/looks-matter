@@ -4,9 +4,11 @@ import { notFound } from 'next/navigation';
 import { getPlaiceholder } from 'plaiceholder';
 import { format } from 'date-fns';
 import dynamic from 'next/dynamic';
+
 const TagButton = dynamic(() => import('@/components/TagButton'));
 const SharePost = dynamic(() => import('@/components/SharePost'));
 
+// Function to generate metadata based on blog content
 export const generateMetadata = async ({
   params,
 }: {
@@ -14,6 +16,7 @@ export const generateMetadata = async ({
 }) => {
   const blog: any = await blogService.getBySlug(params.slug);
   if (!blog) {
+    // Redirect to 404 page if the blog post is not found
     return notFound();
   }
 

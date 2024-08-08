@@ -6,16 +6,24 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useSession } from 'next-auth/react';
 import useLocalStorage from 'use-local-storage';
 import dynamic from 'next/dynamic';
+
+// Dynamically imports the CheckoutPage component
 const CheckoutPage = dynamic(() => import('@/components/checkoutPage'));
+
+// Ensure Stripe public key is defined
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
   throw new Error('NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined');
 }
+
+// Initializes Stripe with the public key
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 export default function Home() {
+  // Retrieves and manages local storage values for amount and order ID
   let [amount, setAmount] = useLocalStorage<any>('amount', '');
   let [orderID, setOrderID] = useLocalStorage<any>('orderID', '');
   const { data: session } = useSession();
+
   if (amount && orderID) {
     return (
       <main className='m-10 mx-auto max-w-6xl rounded-md border bg-gradient-to-tr from-blue-500 to-purple-500 p-10 text-center text-white'>

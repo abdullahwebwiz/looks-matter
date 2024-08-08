@@ -15,10 +15,13 @@ interface IOrderDetails {
 }
 
 const OrderDetails = ({ orderId, paypalClientId }: any) => {
+  // Local state for storing amount and order ID using local storage
   let [amount, setAmount] = useLocalStorage<any>('amount', '');
   let [orderID, setOrderID] = useLocalStorage<any>('orderID', '');
 
+  // Fetch session data from NextAuth for user authentication
   const { data: session } = useSession();
+
 
   const { trigger: deliverOrder, isMutating: isDelivering } = useSWRMutation(
     `/api/orders/${orderId}`,

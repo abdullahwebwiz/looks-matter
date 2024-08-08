@@ -12,6 +12,7 @@ import { User } from '@/lib/models/UserModel';
 import { formatId } from '@/lib/utils';
 
 export default function UserEditForm({ userId }: { userId: string }) {
+  // Fetches the user data by ID using SWR for editing
   const { data: user, error } = useSWR(`/api/admin/users/${userId}`);
   const router = useRouter();
   const { trigger: updateUser, isMutating: isUpdating } = useSWRMutation(
@@ -27,6 +28,7 @@ export default function UserEditForm({ userId }: { userId: string }) {
       const data = await res.json();
       if (!res.ok) return toast.error(data.message);
 
+      // Shows a success message and redirects to the users page after updating
       toast.success('User updated successfully');
       router.push('/admin/users');
     },

@@ -1,12 +1,14 @@
 import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { BlogsSkeleton } from '@/components/AllBlogs';
+
 const CTA = dynamic(() => import('@/components/more/CTA'));
 const FaqSection = dynamic(() => import('@/components/more/FaqSection'));
 const NewsLetter = dynamic(() => import('@/components/more/NewLetter'));
 const StatSection = dynamic(() => import('@/components/more/StatSection'));
 const TeamSection = dynamic(() => import('@/components/more/Team'));
 
+// About2 component provides information about the company and its products
 const About2 = () => {
   return (
     <div className='px-4 py-9 2xl:container md:px-6 md:py-12 lg:px-20 lg:py-16 2xl:mx-auto'>
@@ -15,7 +17,7 @@ const About2 = () => {
           About
         </p>
         <h2 className='mt-2 w-full text-3xl font-bold leading-9  lg:w-10/12 lg:text-4xl lg:leading-10 xl:w-8/12'>
-          Providing Genuine & 100% Authentic products sense 2020.
+          Providing Genuine & 100% Authentic products since 2020.
         </h2>
         <p className='mt-6 text-base font-normal leading-6 '>
           At Looks Matter, we pride ourselves on offering a diverse range of

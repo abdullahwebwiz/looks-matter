@@ -12,6 +12,7 @@ import { Download } from 'lucide-react';
 import { downloadCSV } from '@/lib/csvDownload';
 
 export default function Products() {
+  // Fetches the list of products from the API for display
   const { data: products, error } = useSWR(`/api/admin/products`);
 
   const router = useRouter();
@@ -34,6 +35,7 @@ export default function Products() {
         : toast.error(data.message, {
             id: toastId,
           });
+      // Handles the response from the API, showing appropriate toast notifications
     },
   );
 

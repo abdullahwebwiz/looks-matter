@@ -31,6 +31,8 @@ const Form = () => {
     },
   });
 
+  // Handles form submission with validation and updates session or shows errors
+
   useEffect(() => {
     if (session && session.user) {
       setValue('name', session.user.name!);

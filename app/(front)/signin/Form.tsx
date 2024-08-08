@@ -15,6 +15,7 @@ const Form = () => {
   const { data: session } = useSession();
   const [errorMessage, setErrorMessage] = useState<string | null>(null); // State for error message
 
+  // Retrieves the callback URL from query parameters or defaults to '/'
   let callbackUrl = params.get('callbackUrl') || '/';
   const router = useRouter();
 
@@ -28,6 +29,7 @@ const Form = () => {
       password: '',
     },
   });
+
 
   useEffect(() => {
     if (session && session.user) {

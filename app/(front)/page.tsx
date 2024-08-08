@@ -6,6 +6,7 @@ const Cookies = dynamic(() => import('@/components/more/cookies'));
 const TrustedPartners = dynamic(
   () => import('@/components/more/TrustedPartners'),
 );
+// Dynamically imported components with suspense support
 const SpaceBlock = dynamic(() => import('@/components/more/SpaceBlock'));
 const TopBrands = dynamic(() => import('@/components/more/topBrands'));
 const FeaturedProduct = dynamic(
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_APP_DESC ||
     'Fullstack Next.js Store - Server Components, MongoDB, Next Auth, Tailwind, Zustand',
 };
-
+// HomePage component with multiple dynamic imports and suspense fallbacks
 const HomePage = () => {
   return (
     <div className='my-8 flex flex-col gap-4 md:gap-16'>

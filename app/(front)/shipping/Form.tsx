@@ -8,6 +8,8 @@ import { ShippingAddress } from '@/lib/models/OrderModel';
 import useSWR from 'swr';
 import { useSession } from 'next-auth/react';
 import dynamic from 'next/dynamic';
+
+// Dynamically imports the CheckoutSteps component for code splitting
 const CheckoutSteps = dynamic(
   () => import('@/components/checkout/CheckoutSteps'),
 );
@@ -16,6 +18,7 @@ const Form = () => {
   const router = useRouter();
   const { saveShippingAddress, shippingAddress } = useCartService();
   const { data: session, update } = useSession();
+  // Fetches user data based on the current session user ID
   const { data: user, error } = useSWR(`/api/user/${session?.user?._id}`);
 
   const {

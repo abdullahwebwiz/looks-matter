@@ -15,7 +15,10 @@ const CartDetails = () => {
     setMounted(true);
   }, [items, itemsPrice, decrease, increase]);
 
+  // Display loading state until component is mounted
   if (!mounted) return <>Loading...</>;
+
+  // Render cart details once component is mounted
 
   return (
     <div>

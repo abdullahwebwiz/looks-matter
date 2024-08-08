@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { getPlaiceholder } from 'plaiceholder';
 
 export const metadata = {
+  // Sets the metadata for the page, including the title
   title: 'Admin | Tools',
 };
 
 const toolApi = async () => {
+  // Fetches data from the tools API and returns the result as JSON
   let response = await fetch('https://tools-api-eight.vercel.app/');
   let result = await response.json();
   return result;

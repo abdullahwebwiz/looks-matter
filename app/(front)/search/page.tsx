@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import productServices from '@/lib/services/productService';
 import dynamic from 'next/dynamic';
+
+// Dynamically imports the ProductItem component for code-splitting
 const ProductItem = dynamic(() => import('@/components/products/ProductItem'));
+// Dynamically imports only the Rating component from the module
 const Rating = dynamic(() => import('@/components/products/Rating').then(mod => mod.Rating));
 
 const sortOrders = ['newest', 'lowest', 'highest', 'rating'];
@@ -20,6 +23,7 @@ const prices = [
   },
 ];
 
+// List of ratings to filter products
 const ratings = [5, 4, 3, 2, 1];
 
 export async function generateMetadata({

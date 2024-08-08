@@ -7,7 +7,7 @@ const ContactSection = dynamic(() => import('@/components/more/ContactSection'))
 const NewsLetter = dynamic(() => import('@/components/more/NewLetter'));
 const SpaceBlock = dynamic(() => import('@/components/more/SpaceBlock'));
 
-// Fallback component
+// Fallback component for suspense to display while components are loading
 const fallbackComponent = <BlogsSkeleton qty={4} name='Top Rated' />;
 
 const Page = () => {

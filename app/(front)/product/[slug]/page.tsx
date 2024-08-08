@@ -6,6 +6,8 @@ import productService from '@/lib/services/productService';
 import { convertDocToObj } from '@/lib/utils';
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
+
+// Dynamically imports various product-related components for code-splitting
 const ShareUrl = dynamic(() => import('@/components/products/ShareUrl'));
 const PlayVideo = dynamic(() => import('@/components/products/PlayVideo'));
 const AddToCart = dynamic(() => import('@/components/products/AddToCart'));
@@ -13,6 +15,7 @@ const Rating = dynamic(() => import('@/components/products/Rating').then(mod => 
 const Review = dynamic(() => import('@/components/products/Reviews').then(mod => mod.Review));
 const ReviewSkeleton = dynamic(() => import('@/components/products/Reviews').then(mod => mod.ReviewSkeleton));
 
+// Generates metadata for the page based on product data
 export const generateMetadata = async ({
   params,
 }: {

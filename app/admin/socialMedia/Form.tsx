@@ -9,6 +9,7 @@ import useSWRMutation from 'swr/mutation';
 import SocialMediaModel, { SocialMedia } from '@/lib/models/SocialMediaModel';
 
 export default function BlogEditForm() {
+  // Fetches social media data using SWR, enabling data fetching and caching
   const { data: socialMedia, error } = useSWR(`/api/admin/socialmedia`);
   const router = useRouter();
   console.log(socialMedia);
@@ -25,6 +26,7 @@ export default function BlogEditForm() {
       const data = await res.json();
       if (!res.ok) return toast.error(data.message);
 
+      // Display success message and navigate back to the admin dashboard
       toast.success('updated successfully');
       router.push('/admin/dashboard');
     },

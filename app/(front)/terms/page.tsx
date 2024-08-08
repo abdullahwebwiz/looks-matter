@@ -1,8 +1,12 @@
 import { BlogsSkeleton } from '@/components/AllBlogs';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
+
 const NewsLetter = dynamic(() => import('@/components/more/NewLetter'));
+
+// Page component utilizing Suspense for dynamic imports
 const Page = () => {
+  // Fallback component to be displayed while NewsLetter is loading
   const fallbackComponent = <BlogsSkeleton qty={4} name='Top Rated' />;
   return (
     <div className='bg-gray-100'>

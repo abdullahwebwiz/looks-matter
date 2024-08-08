@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import useCartService from '@/lib/hooks/useCartStore';
 import dynamic from 'next/dynamic';
 
+// Dynamically imports the CheckoutSteps component for code-splitting
 const CheckoutSteps = dynamic(() => import('@/components/checkout/CheckoutSteps'));
 
 const Form = () => {
@@ -15,16 +16,19 @@ const Form = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Saves the selected payment method and navigates to the place-order page
     savePaymentMethod(selectedPaymentMethod);
     router.push('/place-order');
   };
 
   useEffect(() => {
+    // Redirects to shipping page if shipping address is not provided
     if (!shippingAddress) {
       return router.push('/shipping');
     }
     setSelectedPaymentMethod(paymentMethod || 'PayPal');
   }, [paymentMethod, router, shippingAddress]);
+
 
   return (
     <div>

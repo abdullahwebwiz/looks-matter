@@ -7,7 +7,9 @@ import useLocalStorage from 'use-local-storage';
 
 export default function PaymentSuccess() {
   let [orderID, setOrderID] = useLocalStorage<any>('orderID', '');
+
   useEffect(() => {
+    // If there is an order ID, attempt to capture the Stripe order
     if (orderID) {
       fetch(`/api/orders/${orderID}/capture-stripe-order`, {
         method: 'POST',
@@ -17,12 +19,15 @@ export default function PaymentSuccess() {
       })
         .then((response) => response.json())
         .then((orderData) => {
+          // Clears orderID and amount from local storage after successful payment
           localStorage.removeItem('orderID');
           localStorage.removeItem('amount');
           toast.success('Order paid successfully');
         });
     }
   }, [orderID]);
+
+
   if (orderID) {
     return (
       <main className='m-10 mx-auto max-w-6xl rounded-md border bg-gradient-to-tr from-blue-500 to-purple-500 p-10 text-center text-white'>

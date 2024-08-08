@@ -17,6 +17,7 @@ type Inputs = {
 
 const DefaultDetails = () => {
   const { data: session, update } = useSession();
+  // Fetches user data based on the current session user ID
   const { data: user, error } = useSWR(`/api/user/${session?.user?._id}`);
   const router = useRouter();
 

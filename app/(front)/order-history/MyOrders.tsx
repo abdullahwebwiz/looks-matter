@@ -8,6 +8,7 @@ import { Order } from '@/lib/models/OrderModel';
 
 const MyOrders = () => {
   const router = useRouter();
+  // Fetches the orders for the current user using SWR
   const { data: orders, error, isLoading } = useSWR('/api/orders/mine');
 
   if (error) return <>An error has occurred</>;
