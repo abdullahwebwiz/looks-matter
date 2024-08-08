@@ -68,6 +68,14 @@ const AdminLayout = async ({
             </li>
             <li>
               <Link
+                className={'directmsg' === activeItem ? 'active' : ''}
+                href='/admin/directmsg'
+              >
+                Messages
+              </Link>
+            </li>
+            <li>
+              <Link
                 className={'socialMedia' === activeItem ? 'active' : ''}
                 href='/admin/socialMedia'
               >

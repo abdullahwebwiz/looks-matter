@@ -2,6 +2,29 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 import dynamic from 'next/dynamic';
+const Cookies = dynamic(() => import('@/components/more/cookies'));
+const TrustedPartners = dynamic(
+  () => import('@/components/more/TrustedPartners'),
+);
+const SpaceBlock = dynamic(() => import('@/components/more/SpaceBlock'));
+const TopBrands = dynamic(() => import('@/components/more/topBrands'));
+const FeaturedProduct = dynamic(
+  () => import('@/components/more/featuredProduct'),
+);
+const CategorySection = dynamic(
+  () => import('@/components/more/CategorySection'),
+);
+const ReviewSection = dynamic(() => import('@/components/more/ReviewSection'));
+const FeatureSection = dynamic(
+  () => import('@/components/more/featureSection'),
+);
+const StatSection = dynamic(() => import('@/components/more/StatSection'));
+const CTA = dynamic(() => import('@/components/more/CTA'));
+const DownloadApp = dynamic(() => import('@/components/more/DownloadApp'));
+const Pricing = dynamic(() => import('@/components/more/PricingSection'));
+const FaqSection = dynamic(() => import('@/components/more/FaqSection'));
+const TeamSection = dynamic(() => import('@/components/more/Team'));
+const NewsLetter = dynamic(() => import('@/components/more/NewLetter'));
 
 const Carousel = dynamic(() => import('@/components/carousel/carousel'));
 const CarouselSkeleton = dynamic(() =>
@@ -40,7 +63,7 @@ const HomePage = () => {
       </div>
       <div className='flex flex-col gap-8 md:flex-row'>
         <div className='flex-1'>
-          <p className='text-nowrap text-1xl font-semibold md:text-2xl'>
+          <p className='text-1xl text-nowrap font-semibold md:text-2xl'>
             {process.env.NEXT_PUBLIC_APP_NAME}{' '}
           </p>
         </div>
@@ -50,19 +73,66 @@ const HomePage = () => {
       </div>
       <Categories />
       <Icons />
-
       <Suspense
         fallback={<ProductItemsSkeleton qty={8} name='Latest Products' />}
       >
         <ProductItems />
       </Suspense>
-
       <Suspense fallback={<ProductItemsSkeleton qty={4} name='Top Rated' />}>
         <Slider />
       </Suspense>
       <Suspense fallback={<BlogsSkeleton qty={8} name='All Blog Posts' />}>
         <AllBlogs />
       </Suspense>
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <TrustedPartners />
+      </Suspense>
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <TopBrands />
+      </Suspense>
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <FeaturedProduct />{' '}
+      </Suspense>
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <CategorySection />
+      </Suspense>
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <ReviewSection />
+      </Suspense>
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <FeatureSection />
+      </Suspense>
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <SpaceBlock />
+      </Suspense>
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <CTA />
+      </Suspense>
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <SpaceBlock />
+      </Suspense>{' '}
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <DownloadApp />
+      </Suspense>{' '}
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <SpaceBlock />
+      </Suspense>{' '}
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <Pricing />
+      </Suspense>{' '}
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <FaqSection />
+      </Suspense>{' '}
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <TeamSection />
+      </Suspense>{' '}
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <NewsLetter />
+      </Suspense>
+      <Suspense fallback={<BlogsSkeleton qty={4} name='Top Rated' />}>
+        <StatSection />
+      </Suspense>
+      <Cookies />
     </div>
   );
 };

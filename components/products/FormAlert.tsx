@@ -32,7 +32,7 @@ const FeedbackDialog = ({
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
   const { trigger: updateProduct, isMutating: isUpdating } = useSWRMutation(
-    `/api/admin/products/addReview`,
+    `/api/products/addReview`,
     async (url, { arg }) => {
       const res = await fetch(`${url}`, {
         method: 'PUT',

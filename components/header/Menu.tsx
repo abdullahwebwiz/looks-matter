@@ -1,6 +1,23 @@
 'use client';
 
-import { ChevronDown, Moon, ShoppingCart, Sun } from 'lucide-react';
+import {
+  BookKey,
+  BookLock,
+  BookOpenText,
+  ChevronDown,
+  Headset,
+  Info,
+  ListTodo,
+  LogOut,
+  Moon,
+  ShieldBan,
+  ShoppingBag,
+  ShoppingBasket,
+  ShoppingCart,
+  Sun,
+  UserRoundIcon,
+  Users2,
+} from 'lucide-react';
 import Link from 'next/link';
 import { signOut, signIn, useSession } from 'next-auth/react';
 
@@ -71,21 +88,84 @@ const Menu = () => {
               >
                 {session.user.isAdmin && (
                   <li onClick={handleClick}>
-                    <Link href='/admin/dashboard'>Admin Dashboard</Link>
+                    <Link href='/admin/dashboard'>
+                      <ShieldBan />
+                      Admin Dashboard
+                    </Link>
                   </li>
                 )}
-
                 <li onClick={handleClick}>
-                  <Link href='/order-history'>Order history </Link>
+                  <Link href='/order-history'>
+                    <ShoppingBag />
+                    Order history{' '}
+                  </Link>
                 </li>
                 <li onClick={handleClick}>
-                  <Link href='/profile'>Profile</Link>
+                  <Link href='/profile'>
+                    <UserRoundIcon />
+                    Profile
+                  </Link>
                 </li>
                 <li onClick={handleClick}>
                   <button type='button' onClick={signOutHandler}>
+                    <LogOut />
                     Sign out
                   </button>
                 </li>
+                <li onClick={handleClick}>
+                  <Link href='/contact'>
+                    <Headset />
+                    Contact Us
+                  </Link>
+                </li>{' '}
+                <li onClick={handleClick}>
+                  <Link href='/aboutUs'>
+                    <Info />
+                    About Us
+                  </Link>
+                </li>{' '}
+                <li onClick={handleClick}>
+                  <Link href='/blogs'>
+                    <BookOpenText />
+                    Articles
+                  </Link>
+                </li>{' '}
+                <li onClick={handleClick}>
+                  <Link href='/search'>
+                    <ShoppingBasket />
+                    Products
+                  </Link>
+                </li>{' '}
+                <li onClick={handleClick}>
+                  <Link href='/cart'>
+                    <ShoppingCart />
+                    Cart
+                  </Link>
+                </li>{' '}
+                <li onClick={handleClick}>
+                  <Link href='/team'>
+                    <Users2 />
+                    Our Team
+                  </Link>
+                </li>{' '}
+                <li onClick={handleClick}>
+                  <Link href='/order-history'>
+                    <BookLock />
+                    Privacy Policy
+                  </Link>
+                </li>{' '}
+                <li onClick={handleClick}>
+                  <Link href='/terms'>
+                    <BookKey />
+                    Terms & Conditions
+                  </Link>
+                </li>{' '}
+                <li onClick={handleClick}>
+                  <Link href='/terms'>
+                    <ListTodo />
+                    Return Policies
+                  </Link>
+                </li>{' '}
               </ul>
             </div>
           </li>

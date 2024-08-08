@@ -10,7 +10,9 @@ import { v2 as cloudinary } from 'cloudinary';
 import { Product } from '@/lib/models/ProductModel';
 import { formatId } from '@/lib/utils';
 import Swal from 'sweetalert2';
+
 export default function ProductEditForm({ productId }: { productId: string }) {
+  // Fetches product data using SWR, handling data fetching and caching
   const { data: product, error } = useSWR(`/api/admin/products/${productId}`);
   const router = useRouter();
   const [alertShow, setAlertShow] = useState(true);
@@ -27,6 +29,7 @@ export default function ProductEditForm({ productId }: { productId: string }) {
       const data = await res.json();
       if (!res.ok) return toast.error(data.message);
 
+      // Display success message and redirect to the products admin page
       toast.success('Product updated successfully');
       router.push('/admin/products');
     },
